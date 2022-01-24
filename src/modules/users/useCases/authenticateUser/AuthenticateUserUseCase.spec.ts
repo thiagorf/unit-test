@@ -23,7 +23,6 @@ describe("Authenticate User Use Case", () => {
 
 		const newUser = await createUserUseCase.execute(userData);
 		
-		console.log(newUser)
 		const response = await authenticateUserUseCase.execute({
 			email: userData.email,
 			password: userData.password

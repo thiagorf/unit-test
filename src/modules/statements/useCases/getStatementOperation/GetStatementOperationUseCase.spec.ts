@@ -1,6 +1,6 @@
+import { AppError } from "../../../../shared/errors/AppError";
 import { InMemoryUsersRepository } from "../../../users/repositories/in-memory/InMemoryUsersRepository"
 import { InMemoryStatementsRepository } from "../../repositories/in-memory/InMemoryStatementsRepository";
-import { GetStatementOperationError } from "./GetStatementOperationError";
 import { GetStatementOperationUseCase } from "./GetStatementOperationUseCase";
 
 enum OperationType {
@@ -62,7 +62,7 @@ describe("Get Statement Operation Use Case", () => {
 				user_id: "1234"
 			});
 
-		}).rejects.toBeInstanceOf(GetStatementOperationError)
+		}).rejects.toBeInstanceOf(AppError)
 	})
 
 	it("should not be able to get a statement to an inexisting statement", () => {
@@ -78,6 +78,6 @@ describe("Get Statement Operation Use Case", () => {
 				user_id: user.id as string
 			});
 
-		}).rejects.toBeInstanceOf(GetStatementOperationError)
+		}).rejects.toBeInstanceOf(AppError)
 	})
 })

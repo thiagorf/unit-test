@@ -1,6 +1,6 @@
+import { AppError } from "../../../../shared/errors/AppError";
 import { InMemoryUsersRepository } from "../../../users/repositories/in-memory/InMemoryUsersRepository";
 import { InMemoryStatementsRepository } from "../../repositories/in-memory/InMemoryStatementsRepository"
-import { CreateStatementError } from "./CreateStatementError";
 import { CreateStatementUseCase } from "./CreateStatementUseCase"
 
 
@@ -60,7 +60,7 @@ describe("Create Statement Use Case", () => {
 				amount: 200
 			})
 
-		}).rejects.toBeInstanceOf(CreateStatementError);
+		}).rejects.toBeInstanceOf(AppError);
 	})
 
 	it("should not be able to make a statement for a inexisting user", () => {
@@ -71,6 +71,6 @@ describe("Create Statement Use Case", () => {
 				description: "test",
 				amount: 200
 			})
-		}).rejects.toBeInstanceOf(CreateStatementError)
+		}).rejects.toBeInstanceOf(AppError)
 	})
 })

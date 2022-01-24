@@ -1,7 +1,7 @@
+import { AppError } from "../../../../shared/errors/AppError";
 import { User } from "../../entities/User";
 import { InMemoryUsersRepository } from "../../repositories/in-memory/InMemoryUsersRepository";
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
-import { ShowUserProfileError } from "./ShowUserProfileError";
 import { ShowUserProfileUseCase } from "./ShowUserProfileUseCase"
 
 
@@ -32,6 +32,6 @@ describe("Show User Profile Use Case", () => {
 	it("Should not be able to show a profile for a inexisting user", () => {
 		expect(async () => {
 			await showUserProfileUseCase.execute('4564');
-		}).rejects.toBeInstanceOf(ShowUserProfileError);
+		}).rejects.toBeInstanceOf(AppError);
 	})
 })

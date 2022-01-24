@@ -1,6 +1,6 @@
+import { AppError } from "../../../../shared/errors/AppError";
 import { InMemoryUsersRepository } from "../../../users/repositories/in-memory/InMemoryUsersRepository";
 import { InMemoryStatementsRepository } from "../../repositories/in-memory/InMemoryStatementsRepository"
-import { GetBalanceError } from "./GetBalanceError";
 import { GetBalanceUseCase } from "./GetBalanceUseCase";
 
 
@@ -36,7 +36,7 @@ describe("Get Balance Use Case", () => {
 			const response = await getBalanceUseCase.execute({
 				user_id: "1234"
 			});
-		}).rejects.toBeInstanceOf(GetBalanceError)
+		}).rejects.toBeInstanceOf(AppError)
 	});
 	
 })
